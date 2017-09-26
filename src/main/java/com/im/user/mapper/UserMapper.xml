@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.im.user.dao.UserMapper">
+	 <resultMap id="BaseResultMap" type="com.im.user.domain.User" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="Password" property="password" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Tel" property="tel" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="RealName" property="realname" jdbcType="VARCHAR" />
+    <result column="Birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Height" property="height" jdbcType="VARCHAR" />
+    <result column="Weight" property="weight" jdbcType="VARCHAR" />
+    <result column="Marriage" property="marriage" jdbcType="INTEGER" />
+    <result column="Educational" property="educational" jdbcType="INTEGER" />
+    <result column="UnitProperties" property="unitproperties" jdbcType="INTEGER" />
+    <result column="Income" property="income" jdbcType="INTEGER" />
+    <result column="Family" property="family" jdbcType="VARCHAR" />
+    <result column="FamilyAddress" property="familyaddress" jdbcType="VARCHAR" />
+    <result column="NowAddress" property="nowaddress" jdbcType="VARCHAR" />
+    <result column="IndependentHouse" property="independenthouse" jdbcType="INTEGER" />
+    <result column="PrivateCar" property="privatecar" jdbcType="INTEGER" />
+    <result column="Interest" property="interest" jdbcType="VARCHAR" />
+    <result column="Health" property="health" jdbcType="INTEGER" />
+    <result column="Evaluation" property="evaluation" jdbcType="VARCHAR" />
+    <result column="Declaration" property="declaration" jdbcType="VARCHAR" />
+    <result column="HeadSculpture" property="headsculpture" jdbcType="VARCHAR" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="RoleId" property="roleid" jdbcType="INTEGER" />
+    <result column="OtherAgeStart" property="otheragestart" jdbcType="TIMESTAMP" />
+    <result column="OtherAgeEnd" property="otherageend" jdbcType="TIMESTAMP" />
+    <result column="OtherHeightStart" property="otherheightstart" jdbcType="VARCHAR" />
+    <result column="OtherHeightEnd" property="otherheightend" jdbcType="VARCHAR" />
+    <result column="OtherEducational" property="othereducational" jdbcType="VARCHAR" />
+    <result column="OtherUnitProperties" property="otherunitproperties" jdbcType="VARCHAR" />
+    <result column="OtherMarriage" property="othermarriage" jdbcType="VARCHAR" />
+    <result column="OtherIndependentHouse" property="otherindependenthouse" jdbcType="VARCHAR" />
+    <result column="OtherPrivateCar" property="otherprivatecar" jdbcType="VARCHAR" />
+    <result column="Others" property="others" jdbcType="VARCHAR" />
+  </resultMap>		
+  
+  
+	<insert id="create" parameterType="com.im.user.domain.User" >
+    insert into User
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="nickname != null" >
+        NickName,
+      </if>
+      <if test="password != null" >
+        Password,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="tel != null" >
+        Tel,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="realname != null" >
+        RealName,
+      </if>
+      <if test="birthday != null" >
+        Birthday,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="height != null" >
+        Height,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="marriage != null" >
+        Marriage,
+      </if>
+      <if test="educational != null" >
+        Educational,
+      </if>
+      <if test="unitproperties != null" >
+        UnitProperties,
+      </if>
+      <if test="income != null" >
+        Income,
+      </if>
+      <if test="family != null" >
+        Family,
+      </if>
+      <if test="familyaddress != null" >
+        FamilyAddress,
+      </if>
+      <if test="nowaddress != null" >
+        NowAddress,
+      </if>
+      <if test="independenthouse != null" >
+        IndependentHouse,
+      </if>
+      <if test="privatecar != null" >
+        PrivateCar,
+      </if>
+      <if test="interest != null" >
+        Interest,
+      </if>
+      <if test="health != null" >
+        Health,
+      </if>
+      <if test="evaluation != null" >
+        Evaluation,
+      </if>
+      <if test="declaration != null" >
+        Declaration,
+      </if>
+      <if test="headsculpture != null" >
+        HeadSculpture,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="roleid != null" >
+        RoleId,
+      </if>
+      <if test="otheragestart != null" >
+        OtherAgeStart,
+      </if>
+      <if test="otherageend != null" >
+        OtherAgeEnd,
+      </if>
+      <if test="otherheightstart != null" >
+        OtherHeightStart,
+      </if>
+      <if test="otherheightend != null" >
+        OtherHeightEnd,
+      </if>
+      <if test="othereducational != null" >
+        OtherEducational,
+      </if>
+      <if test="otherunitproperties != null" >
+        OtherUnitProperties,
+      </if>
+      <if test="othermarriage != null" >
+        OtherMarriage,
+      </if>
+      <if test="otherindependenthouse != null" >
+        OtherIndependentHouse,
+      </if>
+      <if test="otherprivatecar != null" >
+        OtherPrivateCar,
+      </if>
+      <if test="others != null" >
+        Others,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="educational != null" >
+        #{educational,jdbcType=INTEGER},
+      </if>
+      <if test="unitproperties != null" >
+        #{unitproperties,jdbcType=INTEGER},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=INTEGER},
+      </if>
+      <if test="family != null" >
+        #{family,jdbcType=VARCHAR},
+      </if>
+      <if test="familyaddress != null" >
+        #{familyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nowaddress != null" >
+        #{nowaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="independenthouse != null" >
+        #{independenthouse,jdbcType=INTEGER},
+      </if>
+      <if test="privatecar != null" >
+        #{privatecar,jdbcType=INTEGER},
+      </if>
+      <if test="interest != null" >
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        #{health,jdbcType=INTEGER},
+      </if>
+      <if test="evaluation != null" >
+        #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="declaration != null" >
+        #{declaration,jdbcType=VARCHAR},
+      </if>
+      <if test="headsculpture != null" >
+        #{headsculpture,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="otheragestart != null" >
+        #{otheragestart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherageend != null" >
+        #{otherageend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherheightstart != null" >
+        #{otherheightstart,jdbcType=VARCHAR},
+      </if>
+      <if test="otherheightend != null" >
+        #{otherheightend,jdbcType=VARCHAR},
+      </if>
+      <if test="othereducational != null" >
+        #{othereducational,jdbcType=VARCHAR},
+      </if>
+      <if test="otherunitproperties != null" >
+        #{otherunitproperties,jdbcType=VARCHAR},
+      </if>
+      <if test="othermarriage != null" >
+        #{othermarriage,jdbcType=VARCHAR},
+      </if>
+      <if test="otherindependenthouse != null" >
+        #{otherindependenthouse,jdbcType=VARCHAR},
+      </if>
+      <if test="otherprivatecar != null" >
+        #{otherprivatecar,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+	<select id="findByTel" parameterType="string" resultType="com.im.user.domain.User">
+		SELECT * FROM User WHERE TEL = #{tel}
+	</select>
+	
+	<update id="update" parameterType="com.im.user.domain.User" >
+    update User 
+    <set >
+      <if test="nickname != null" >
+        NickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        RealName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        Birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        Height = #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        Marriage = #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="educational != null" >
+        Educational = #{educational,jdbcType=INTEGER},
+      </if>
+      <if test="unitproperties != null" >
+        UnitProperties = #{unitproperties,jdbcType=INTEGER},
+      </if>
+      <if test="income != null" >
+        Income = #{income,jdbcType=INTEGER},
+      </if>
+      <if test="family != null" >
+        Family = #{family,jdbcType=VARCHAR},
+      </if>
+      <if test="familyaddress != null" >
+        FamilyAddress = #{familyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nowaddress != null" >
+        NowAddress = #{nowaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="independenthouse != null" >
+        IndependentHouse = #{independenthouse,jdbcType=INTEGER},
+      </if>
+      <if test="privatecar != null" >
+        PrivateCar = #{privatecar,jdbcType=INTEGER},
+      </if>
+      <if test="interest != null" >
+        Interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        Health = #{health,jdbcType=INTEGER},
+      </if>
+      <if test="evaluation != null" >
+        Evaluation = #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="declaration != null" >
+        Declaration = #{declaration,jdbcType=VARCHAR},
+      </if>
+      <if test="headsculpture != null" >
+        HeadSculpture = #{headsculpture,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null" >
+        RoleId = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="otheragestart != null" >
+        OtherAgeStart = #{otheragestart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherageend != null" >
+        OtherAgeEnd = #{otherageend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="otherheightstart != null" >
+        OtherHeightStart = #{otherheightstart,jdbcType=VARCHAR},
+      </if>
+      <if test="otherheightend != null" >
+        OtherHeightEnd = #{otherheightend,jdbcType=VARCHAR},
+      </if>
+      <if test="othereducational != null" >
+        OtherEducational = #{othereducational,jdbcType=VARCHAR},
+      </if>
+      <if test="otherunitproperties != null" >
+        OtherUnitProperties = #{otherunitproperties,jdbcType=VARCHAR},
+      </if>
+      <if test="othermarriage != null" >
+        OtherMarriage = #{othermarriage,jdbcType=VARCHAR},
+      </if>
+      <if test="otherindependenthouse != null" >
+        OtherIndependentHouse = #{otherindependenthouse,jdbcType=VARCHAR},
+      </if>
+      <if test="otherprivatecar != null" >
+        OtherPrivateCar = #{otherprivatecar,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        Others = #{others,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Tel = #{tel}
+  </update>
+	
+	<select id="findList" resultType="com.im.user.domain.User" parameterType="com.im.user.domain.User" >
+    select  *  from User where 1=1
+       <if test="nickname != null" >
+       and NickName = #{nickname,jdbcType=VARCHAR}
+      </if>
+      <if test="birthday != null" >
+       and  Birthday = #{birthday,jdbcType=TIMESTAMP}
+      </if>
+      <if test="height != null" >
+       and  Height = #{height,jdbcType=VARCHAR}
+      </if>
+      <if test="weight != null" >
+       and  Weight = #{weight,jdbcType=VARCHAR}
+      </if>
+      <if test="marriage != null" >
+       and  Marriage = #{marriage,jdbcType=INTEGER}
+      </if>
+      <if test="educational != null" >
+       and  Educational = #{educational,jdbcType=INTEGER}
+      </if>
+      <if test="unitproperties != null" >
+       and  UnitProperties = #{unitproperties,jdbcType=INTEGER}
+      </if>
+      <if test="income != null" >
+       and  Income = #{income,jdbcType=INTEGER}
+      </if>
+      <if test="family != null" >
+       and  Family = #{family,jdbcType=VARCHAR}
+      </if>
+      <if test="familyaddress != null" >
+       and  FamilyAddress = #{familyaddress,jdbcType=VARCHAR}
+      </if>
+      <if test="nowaddress != null" >
+       and  NowAddress = #{nowaddress,jdbcType=VARCHAR}
+      </if>
+      <if test="independenthouse != null" >
+       and  IndependentHouse = #{independenthouse,jdbcType=INTEGER}
+      </if>
+      <if test="privatecar != null" >
+       and  PrivateCar = #{privatecar,jdbcType=INTEGER}
+      </if>
+      <if test="interest != null" >
+       and  Interest = #{interest,jdbcType=VARCHAR}
+      </if>
+      <if test="health != null" >
+       and  Health = #{health,jdbcType=INTEGER}
+      </if>
+      <if test="evaluation != null" >
+       and  Evaluation = #{evaluation,jdbcType=VARCHAR}
+      </if>
+      <if test="declaration != null" >
+       and  Declaration = #{declaration,jdbcType=VARCHAR}
+      </if>
+      <if test="headsculpture != null" >
+       and  HeadSculpture = #{headsculpture,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+       and  Status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="roleid != null" >
+       and  RoleId = #{roleid,jdbcType=INTEGER}
+      </if>
+      <if test="otheragestart != null" >
+       and  OtherAgeStart = #{otheragestart,jdbcType=TIMESTAMP}
+      </if>
+      <if test="otherageend != null" >
+       and  OtherAgeEnd = #{otherageend,jdbcType=TIMESTAMP}
+      </if>
+      <if test="otherheightstart != null" >
+       and  OtherHeightStart = #{otherheightstart,jdbcType=VARCHAR}
+      </if>
+      <if test="otherheightend != null" >
+       and  OtherHeightEnd = #{otherheightend,jdbcType=VARCHAR}
+      </if>
+      <if test="othereducational != null" >
+       and  OtherEducational = #{othereducational,jdbcType=VARCHAR}
+      </if>
+      <if test="otherunitproperties != null" >
+       and  OtherUnitProperties = #{otherunitproperties,jdbcType=VARCHAR}
+      </if>
+      <if test="othermarriage != null" >
+       and  OtherMarriage = #{othermarriage,jdbcType=VARCHAR}
+      </if>
+      <if test="otherindependenthouse != null" >
+       and  OtherIndependentHouse = #{otherindependenthouse,jdbcType=VARCHAR}
+      </if>
+      <if test="otherprivatecar != null" >
+       and  OtherPrivateCar = #{otherprivatecar,jdbcType=VARCHAR}
+      </if>
+      <if test="others != null" >
+       and  Others = #{others,jdbcType=VARCHAR}
+      </if>
+    
+  </select>
+  
+</mapper>

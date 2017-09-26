@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ito.dao.CircleMapper" >
+  <resultMap id="BaseResultMap" type="com.im.circle.domain.Circle" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="UserId" property="userid" jdbcType="INTEGER" />
+    <result column="Url" property="url" jdbcType="VARCHAR" />
+    <result column="Tittle" property="tittle" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Status" property="status" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <insert id="create" parameterType="com.im.circle.domain.Circle" >
+    insert into Circle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userid != null" >
+        UserId,
+      </if>
+      <if test="url != null" >
+        Url,
+      </if>
+      <if test="tittle != null" >
+        Tittle,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="tittle != null" >
+        #{tittle,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+    <select id="findByUserId" parameterType="string" resultType="com.im.circle.domain.Circle" >
+    select * from Circle where UserId=#{userId}
+  </select>
+  
+   <select id="findAllByUserId" parameterType="string" resultType="com.im.circle.domain.Circle">
+		SELECT * FROM Circle WHERE UserId = #{userId} or UserId in ( 
+select ID from User where TEL in
+(select TEL from UserList where USERID=#{userId})) </select>
+
+
+<delete id="delete" parameterType="int">
+	DELETE  FROM Circle where ID=#{id} 
+	</delete>
+
+
+</mapper>
