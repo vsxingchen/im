@@ -90,4 +90,5 @@ public class AlbumController {
 		albumService.delete(Integer.parseInt(id));
 		JsonUtil.writeJSON(null,response,200,"success");		
 	}
+	
 }
