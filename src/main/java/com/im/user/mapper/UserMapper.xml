@@ -40,15 +40,15 @@
     <result column="OtherIndependentHouse" property="otherindependenthouse" jdbcType="VARCHAR" />
     <result column="OtherPrivateCar" property="otherprivatecar" jdbcType="VARCHAR" />
     <result column="Others" property="others" jdbcType="VARCHAR" />
+    <result column="Sex" property="sex" jdbcType="INTEGER" />
+
   </resultMap>		
   
   
 	<insert id="create" parameterType="com.im.user.domain.User" >
     insert into User
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
+     
       <if test="nickname != null" >
         NickName,
       </if>
@@ -157,11 +157,12 @@
       <if test="others != null" >
         Others,
       </if>
+       <if test="sex != null" >
+        Sex,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+    
       <if test="nickname != null" >
         #{nickname,jdbcType=VARCHAR},
       </if>
@@ -269,6 +270,9 @@
       </if>
       <if test="others != null" >
         #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -382,6 +386,9 @@
       <if test="others != null" >
         Others = #{others,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null" >
+        Sex = #{sex},
+      </if>
     </set>
     where Tel = #{tel}
   </update>
@@ -449,10 +456,10 @@
        and  RoleId = #{roleid,jdbcType=INTEGER}
       </if>
       <if test="otheragestart != null" >
-       and  OtherAgeStart = #{otheragestart,jdbcType=TIMESTAMP}
+       and  OtherAgeStart &gt; #{otheragestart,jdbcType=TIMESTAMP}
       </if>
       <if test="otherageend != null" >
-       and  OtherAgeEnd = #{otherageend,jdbcType=TIMESTAMP}
+       and  OtherAgeEnd &lt; #{otherageend,jdbcType=TIMESTAMP}
       </if>
       <if test="otherheightstart != null" >
        and  OtherHeightStart = #{otherheightstart,jdbcType=VARCHAR}
@@ -478,7 +485,9 @@
       <if test="others != null" >
        and  Others = #{others,jdbcType=VARCHAR}
       </if>
-    
+      <if test="sex != null" >
+       and  Sex = #{sex}
+      </if>
   </select>
   
 </mapper>

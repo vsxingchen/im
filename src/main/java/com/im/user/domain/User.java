@@ -42,7 +42,7 @@ public class User {
     /** 体重*/
     private String weight;
 
-    /** 是否结婚 0否 1是*/
+    /** 0未婚 1离异有子女 2离异无子女*/
     private Integer marriage;
 
     /** 学历 0无 1小学 2初中 3高中 4大学本科 5大专 6中专 7研究生 8博士 9其他*/
@@ -119,7 +119,11 @@ public class User {
 
     /** 其他（多选：开朗、乐观、温柔、稳重、孝顺、善良、幽默、有责任心……等）*/
     private String others;
-
+    /**
+     * 性别 1男 2女
+     */
+    private Integer sex;
+    
     public Integer getId() {
         return id;
     }
@@ -415,4 +419,13 @@ public class User {
     public void setOthers(String others) {
         this.others = others == null ? null : others.trim();
     }
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+    
 }
