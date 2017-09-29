@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.im.user.dao.UserMapper;
 import com.im.user.domain.User;
 import com.im.user.service.UserService;
+import com.im.user.vo.UserVo;
 
 
 @Service
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		userMapper.update(user);		
 	}
 
-	public List<User> findList(User user) {
+	public List<User> findList(UserVo user) {
 		return userMapper.findList(user);
 	}
 

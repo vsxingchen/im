@@ -124,6 +124,11 @@ public class User {
      */
     private Integer sex;
     
+    /**
+     * 年龄
+     */
+    private Integer age;
+    
     public Integer getId() {
         return id;
     }
@@ -426,6 +431,14 @@ public class User {
 
 	public void setSex(Integer sex) {
 		this.sex = sex;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
     
 }

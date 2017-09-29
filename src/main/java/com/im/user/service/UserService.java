@@ -3,6 +3,7 @@ package com.im.user.service;
 import java.util.List;
 
 import com.im.user.domain.User;
+import com.im.user.vo.UserVo;
 
 public interface UserService {
 	/**
@@ -29,7 +30,7 @@ public interface UserService {
 	    * @param user
 	    * @return
 	    */
-	    List<User> findList(User user);
+	    List<User> findList(UserVo user);
 
      
 }

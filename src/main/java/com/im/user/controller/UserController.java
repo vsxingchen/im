@@ -22,6 +22,7 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.http.HttpResponse;
 import com.im.user.domain.User;
 import com.im.user.service.UserService;
+import com.im.user.vo.UserVo;
 import com.im.utils.JsonUtil;
 import com.im.utils.SmsSend;
 
@@ -89,8 +90,9 @@ public class UserController{
 	 */
 	@RequestMapping(value = { "/search" }, method = { RequestMethod.GET})
 	public void search(HttpServletRequest request, HttpServletResponse response,String tel,String password) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		String jsonStr=request.getParameter("jsonStr");
-		User user = JSONObject.parseObject(jsonStr, User.class);
+		UserVo user = JSONObject.parseObject(jsonStr, UserVo.class);
 		List<User> users=userService.findList(user);
 		JsonUtil.writeJSON(users, response,200,"success");
 	}

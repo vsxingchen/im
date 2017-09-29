@@ -3,6 +3,7 @@ package com.im.user.dao;
 import java.util.List;
 
 import com.im.user.domain.User;
+import com.im.user.vo.UserVo;
 
 public interface UserMapper {
    /**
@@ -29,6 +30,6 @@ public interface UserMapper {
     * @param user
     * @return
     */
-   List<User> findList(User user);
+   List<User> findList(UserVo user);
 
 }

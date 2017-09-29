@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.im.user.domain.User;
+import com.im.user.service.UserService;
 import com.im.userlist.domain.UserList;
 import com.im.userlist.service.UserListService;
 import com.im.utils.JsonUtil;
@@ -26,19 +27,25 @@ public class UserListController {
 
 	@Autowired
 	private UserListService userListService;
-	
+	@Autowired
+	private UserService userService;
 	/**
 	 * 添加通讯录
 	 */
 	@RequestMapping(value = { "/create" }, method = { RequestMethod.POST})
-	public void create(HttpServletRequest request, HttpServletResponse response,int userId) throws Exception {
+	public void create(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		String name=request.getParameter("name"); 	
-		String tel=request.getParameter("tel"); 	
+		String mytel=request.getParameter("mytel");//自己手机号
+		String tel=request.getParameter("tel"); 
+		User users=userService.findByTel(tel);
+		User myuser=userService.findByTel(mytel);
+        if(users==null){
+        	JsonUtil.writeJSON(null, response,301,"用户不存在");
+        }else{
 		UserList user=new UserList();
 		user.setTel(tel);
-	    user.setUserid(userId);
-		user.setName(name);
+	    user.setUserid(myuser.getId());
+		user.setName(users.getNickname());
 		UserList userList=userListService.findByTelAndUserId(user);
 		if(userList==null){
 			userListService.create(user);
@@ -46,6 +53,7 @@ public class UserListController {
 		}else{
 			JsonUtil.writeJSON(null, response,300,"用户已存在");
 		}
+        }
 	}
 	/**
 	 * 通讯录列表
