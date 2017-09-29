@@ -287,6 +287,10 @@
 		SELECT * FROM User WHERE TEL = #{tel}
 	</select>
 	
+	<select id="findById" parameterType="int" resultType="com.im.user.domain.User">
+		SELECT * FROM User WHERE ID = #{id}
+	</select>
+	
 	<update id="update" parameterType="com.im.user.domain.User" >
     update User 
     <set >

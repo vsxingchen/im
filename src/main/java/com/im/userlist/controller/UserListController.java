@@ -14,6 +14,7 @@ import com.im.user.domain.User;
 import com.im.user.service.UserService;
 import com.im.userlist.domain.UserList;
 import com.im.userlist.service.UserListService;
+import com.im.userlist.vo.UserListVo;
 import com.im.utils.JsonUtil;
 
 /**
@@ -36,7 +37,7 @@ public class UserListController {
 	public void create(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String mytel=request.getParameter("mytel");//自己手机号
-		String tel=request.getParameter("tel"); 
+		String tel=request.getParameter("tel"); //好友手机号
 		User users=userService.findByTel(tel);
 		User myuser=userService.findByTel(mytel);
         if(users==null){
@@ -47,12 +48,21 @@ public class UserListController {
 	    user.setUserid(myuser.getId());
 		user.setName(users.getNickname());
 		UserList userList=userListService.findByTelAndUserId(user);
+		
+		UserList user2=new UserList();
+		user2.setTel(mytel);
+	    user2.setUserid(users.getId());
+		UserList userList2=userListService.findByTelAndUserId(user2);
+        if(userList2==null){
 		if(userList==null){
 			userListService.create(user);
 			JsonUtil.writeJSON(null, response,200,"申请成功");
 		}else{
 			JsonUtil.writeJSON(null, response,300,"用户已存在");
 		}
+        }else{
+        	JsonUtil.writeJSON(null, response,300,"好友已存在");
+        }
         }
 	}
 	/**
@@ -63,7 +73,7 @@ public class UserListController {
 	public void list(HttpServletRequest request, HttpServletResponse response,int userId) throws Exception {
 			UserList userList=new UserList();
 			userList.setUserid(userId);
-			List<UserList> users=userListService.findList(userList);
+			List<UserListVo> users=userListService.findList(userList);
 			JsonUtil.writeJSON(users, response,200,"success");
 		
 	}
@@ -86,6 +96,20 @@ public class UserListController {
 			userList.setId(id);
 			userList.setStatus(status);
 			userListService.update(userList);
+			
+			UserList list=userListService.findById(id);
+			String tel=list.getTel();
+			User user2=userService.findByTel(tel);
+			
+			User user=userService.findById(userId);//自己
+			UserList userList2=new UserList();
+			userList2.setTel(user.getTel());
+			userList2.setStatus(status);
+			userList2.setName(user.getNickname());
+			userList2.setUserid(user2.getId());
+			
+			userListService.create(userList2);
+
 			JsonUtil.writeJSON(null, response,200,"同意");
 		}
 	}

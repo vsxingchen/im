@@ -4,6 +4,7 @@ package com.im.userlist.service;
 import java.util.List;
 
 import com.im.userlist.domain.UserList;
+import com.im.userlist.vo.UserListVo;
 
 
 
@@ -19,7 +20,7 @@ public interface UserListService {
 	 * 查询通讯录列表
 	 * @param userList
 	 */
-	List<UserList> findList(UserList userList);
+	List<UserListVo> findList(UserList userList);
 	
 	/**
 	 * 根据tel和userId查询通讯录
@@ -39,4 +40,9 @@ public interface UserListService {
 	 */
 	void update(UserList userList);
 		
+	/**
+	 * 根据ID查询通讯录
+	 * @param userList
+	 */
+	UserList findById(int id);
 }

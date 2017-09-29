@@ -10,6 +10,7 @@ import com.im.user.domain.User;
 import com.im.userlist.dao.UserListMapper;
 import com.im.userlist.domain.UserList;
 import com.im.userlist.service.UserListService;
+import com.im.userlist.vo.UserListVo;
 
 
 
@@ -25,7 +26,7 @@ public class UserListServiceImpl implements UserListService{
 	}
 
 	
-	public List<UserList> findList(UserList userList) {
+	public List<UserListVo> findList(UserList userList) {
 		return userListDao.findList(userList);
 	}
 
@@ -42,5 +43,10 @@ public class UserListServiceImpl implements UserListService{
 	
 	public void update(UserList userList) {
 		userListDao.update(userList);
+	}
+
+
+	public UserList findById(int id) {
+		return userListDao.findById(id);
 	}
 }

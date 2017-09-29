@@ -33,4 +33,8 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findList(user);
 	}
 
+	public User findById(int id) {
+		return userMapper.findById(id);
+	}
+
 }

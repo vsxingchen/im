@@ -31,6 +31,11 @@ public interface UserService {
 	    * @return
 	    */
 	    List<User> findList(UserVo user);
-
+		/**
+		 * 根据手机号查询用户
+		 * @param tel
+		 * @return
+		 */
+		User findById(int id);
      
 }

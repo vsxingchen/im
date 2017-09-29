@@ -12,14 +12,31 @@
     <result column="TYPE" property="type" jdbcType="VARCHAR" />
   </resultMap>
 
-		<select id="findList" parameterType="com.im.userlist.domain.UserList" resultType="com.im.userlist.domain.UserList">
-				SELECT * FROM UserList WHERE USERID = #{userid} or TEL in(select Tel from User where ID=#{userid}) 
+		<select id="findList" parameterType="com.im.userlist.vo.UserListVo" resultType="com.im.userlist.domain.UserList">
+				SELECT * FROM UserList ul 
+				left join  User us on ul.USERID=us.ID
+				WHERE 1=1
+				<if test="userid!=null and userid!='' ">
+					and ul.USERID = #{userid}
+				</if>
+				<if test="tel!=null and tel!='' ">
+		           and ul.TEL= #{tel}
+				</if>
 		</select>
 	
 	<select id="findByTelAndUserId" parameterType="com.im.userlist.domain.UserList" resultType="com.im.userlist.domain.UserList">
-		SELECT * FROM UserList WHERE USERID = #{userid} and TEL= #{tel}
-			</select>
+		SELECT * FROM UserList WHERE 1=1
+		<if test="userid!=null and userid!='' ">
+					and USERID = #{userid}
+		</if>
+		<if test="tel!=null and tel!='' ">
+		           and TEL= #{tel}
+		</if>
+	</select>
 			
+	<select id="findById" parameterType="int" resultType="com.im.userlist.domain.UserList">
+		SELECT * FROM UserList WHERE ID = #{id}
+	</select>
 	<insert id="create" parameterType="com.im.userlist.domain.UserList">
 		INSERT INTO UserList
 		 (
